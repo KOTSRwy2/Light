@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://jppqw55bcq7h"]
+
+[ext_resource type="Script" path="res://Interactables/Chest/Chest.gd" id="1_m07ph"]
+[ext_resource type="Texture2D" uid="uid://dguoncjq2k2q5" path="res://Interactables/Chest/Cursed_Chest_Idle.png" id="1_sa7ae"]
+[ext_resource type="AudioStream" uid="uid://nxxrtc6e5uax" path="res://Interactables/Chest/treasure-open.wav" id="3_mhdoh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mylki"]
+size = Vector2(28, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2kne"]
+size = Vector2(12, 12.5)
+
+[sub_resource type="Animation" id="Animation_k4pae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0feai"]
+resource_name = "open_01"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_mhdoh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_sofbq"]
+resource_name = "open_02"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_mhdoh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmwe3"]
+_data = {
+"RESET": SubResource("Animation_k4pae"),
+"open_01": SubResource("Animation_0feai"),
+"open_02": SubResource("Animation_sofbq")
+}
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_m07ph")
+animation_set = "01"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_sa7ae")
+hframes = 6
+vframes = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_mylki")
+debug_color = Color(0, 0.6, 0.701961, 0.207843)
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_t2kne")
+debug_color = Color(0.34902, 0.615686, 0.176471, 0.333333)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tmwe3")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

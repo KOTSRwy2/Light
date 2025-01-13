@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxmhfbr24sjsj"]
+[gd_scene load_steps=21 format=3 uid="uid://cxmhfbr24sjsj"]
 
 [ext_resource type="Script" path="res://Player/Script/Player.gd" id="1_pn8db"]
 [ext_resource type="Texture2D" uid="uid://c0mtmyrfpl0mu" path="res://Player/Sprite/The Adventurer - Free/The Adventurer - Free/Idle/idle.png" id="2_pdiaa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Player/Script/state_idle.gd" id="5_48uyg"]
 [ext_resource type="Script" path="res://Player/Script/state_walk.gd" id="6_7k2cf"]
 [ext_resource type="Script" path="res://Player/Script/PlayerCamera.gd" id="7_kmagr"]
+[ext_resource type="Script" path="res://Player/Script/PlayerInteractionHost.gd" id="8_i44yc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akio3"]
 radius = 7.0
@@ -411,6 +412,9 @@ _data = {
 "walk_up": SubResource("Animation_d0l7n")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_git13"]
+size = Vector2(13, 11)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
 motion_mode = 1
@@ -419,6 +423,7 @@ script = ExtResource("1_pn8db")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_akio3")
+debug_color = Color(0, 0.6, 0.701961, 0.0941176)
 
 [node name="Idle_Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -450,8 +455,19 @@ script = ExtResource("5_48uyg")
 [node name="walk" type="Node" parent="State_Machiine"]
 script = ExtResource("6_7k2cf")
 
-[node name="Node" type="Node" parent="State_Machiine"]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
 script = ExtResource("7_kmagr")
+
+[node name="Interactions" type="Node2D" parent="."]
+script = ExtResource("8_i44yc")
+
+[node name="Area2D" type="Area2D" parent="Interactions"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_git13")
+debug_color = Color(0.376471, 0.603922, 0.32549, 0.239216)

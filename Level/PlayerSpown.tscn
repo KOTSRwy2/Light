@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckec2t8pmqj70"]
+
+[ext_resource type="Script" path="res://Level/PlayerSpowner.gd" id="1_gqxkq"]
+[ext_resource type="Texture2D" uid="uid://dlr2s8n407nps" path="res://Player/Sprite/The Adventurer - Free/The Adventurer - Free/Idle/idle_down.png" id="1_ywube"]
+
+[node name="PlayerSpown" type="Node2D"]
+script = ExtResource("1_gqxkq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.00392157, 0.858824, 0.00392157, 0.376471)
+position = Vector2(0, -7)
+texture = ExtResource("1_ywube")
+hframes = 8

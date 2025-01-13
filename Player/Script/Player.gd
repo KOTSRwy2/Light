@@ -20,7 +20,7 @@ func  _ready():
 	
 
 
-func _process(delta):
+func _process(_delta):
 	direction = Vector2(
 		Input.get_axis("LEFT","RIGHT"),
 		Input.get_axis("UP","DOWN")
@@ -31,7 +31,7 @@ func _process(delta):
 
 
 
-func  _physics_process(delta):
+func  _physics_process(_delta):
 	move_and_slide()
 
 

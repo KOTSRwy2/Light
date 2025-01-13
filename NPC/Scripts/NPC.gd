@@ -9,11 +9,12 @@ var dirction : Vector2 = Vector2.DOWN
 var direction_name : String = "down"
 var do_behavior : bool = true
 
-
+@onready var sprite : Sprite2D = $Sprite2D
 @export var npc_resource : NPC_Resource : set = _set_npc_resource
-
-@onready var sprite :Sprite2D = $Sprite2D
 @onready var animation : AnimationPlayer = $AnimationPlayer
+
+
+
 
 
 func _ready() -> void:
@@ -43,14 +44,14 @@ func update_animation() -> void:
 	animation.play( state + "_" + direction_name )
 
 
-#func _on_player_interacted() -> void:
-	#update_dirction( Playermanager.player.global_position )
-	#state = "idle"
-	#velocity = Vector2.ZERO
-	#update_animation()
-	#do_behavior = false
+func _on_player_interacted() -> void:
+	update_dirction( PlayerManager.player.global_position )
+	state = "idle"
+	velocity = Vector2.ZERO
+	update_animation()
+	do_behavior = false
 	
-	#pass
+	pass
 
 
 func _on_interaction_finished() -> void:

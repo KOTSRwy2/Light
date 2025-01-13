@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jppqw55bcq7h"]
+[gd_scene load_steps=12 format=3 uid="uid://jppqw55bcq7h"]
 
 [ext_resource type="Script" path="res://Interactables/Chest/Chest.gd" id="1_m07ph"]
 [ext_resource type="Texture2D" uid="uid://dguoncjq2k2q5" path="res://Interactables/Chest/Cursed_Chest_Idle.png" id="1_sa7ae"]
@@ -23,6 +23,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0feai"]
@@ -56,6 +68,18 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_sofbq"]
 resource_name = "open_02"
@@ -88,6 +112,18 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmwe3"]
 _data = {
@@ -96,11 +132,22 @@ _data = {
 "open_02": SubResource("Animation_sofbq")
 }
 
+[sub_resource type="Gradient" id="Gradient_iykrv"]
+offsets = PackedFloat32Array(0, 0.493506, 0.967532)
+colors = PackedColorArray(1, 1, 1, 1, 0.348993, 0.348993, 0.348993, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_thwrv"]
+gradient = SubResource("Gradient_iykrv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.431193, 0.504587)
+
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_m07ph")
 animation_set = "01"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.91, 0.91, 0.91, 1)
 position = Vector2(0, -10)
 texture = ExtResource("1_sa7ae")
 hframes = 6
@@ -130,3 +177,8 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -4)
+color = Color(0.8, 0.048, 0.048, 1)
+texture = SubResource("GradientTexture2D_thwrv")

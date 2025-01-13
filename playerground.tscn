@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://fecn2hbh86a7"]
+[gd_scene load_steps=9 format=4 uid="uid://fecn2hbh86a7"]
 
 [ext_resource type="Script" path="res://Level/Level.gd" id="1_48mlf"]
 [ext_resource type="PackedScene" uid="uid://ckec2t8pmqj70" path="res://Level/PlayerSpown.tscn" id="2_joim3"]
 [ext_resource type="PackedScene" uid="uid://dgo546tda2swk" path="res://Tilemap/dungeon_00.tscn" id="2_q0eo5"]
 [ext_resource type="PackedScene" uid="uid://jppqw55bcq7h" path="res://Interactables/Chest/Chest.tscn" id="4_jsxgx"]
+[ext_resource type="PackedScene" uid="uid://c2yita1en22wb" path="res://NPC/NPC_Behavior_Wander.tscn" id="6_cauyr"]
+[ext_resource type="Resource" uid="uid://4bhv7yrngwan" path="res://NPC/00_NPC/Ximeng.tres" id="6_cpak6"]
+[ext_resource type="PackedScene" uid="uid://d1bifedayr0en" path="res://NPC/NPC.tscn" id="6_uob3l"]
+[ext_resource type="Script" path="res://NPC/Scripts/NPC_Behavior.gd" id="7_v7u4r"]
 
 [node name="Playerground" type="Node2D"]
 script = ExtResource("1_48mlf")
@@ -20,3 +24,19 @@ position = Vector2(165, 113)
 [node name="Chest2" parent="." instance=ExtResource("4_jsxgx")]
 position = Vector2(249, 88)
 animation_set = "02"
+
+[node name="Npc" parent="." instance=ExtResource("6_uob3l")]
+position = Vector2(103, 93)
+npc_resource = ExtResource("6_cpak6")
+
+[node name="NpcWander" parent="Npc" instance=ExtResource("6_cauyr")]
+script = ExtResource("7_v7u4r")
+
+[node name="AtmosphereLight" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="AtmosphereLight"]
+color = Color(0.454524, 0.454524, 0.454524, 1)
+blend_mode = 1
+
+[node name="DirectionalLight2D2" type="DirectionalLight2D" parent="AtmosphereLight"]
+editor_only = true

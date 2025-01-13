@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxmhfbr24sjsj"]
+[gd_scene load_steps=27 format=3 uid="uid://cxmhfbr24sjsj"]
 
 [ext_resource type="Script" path="res://Player/Script/Player.gd" id="1_pn8db"]
 [ext_resource type="Texture2D" uid="uid://c0mtmyrfpl0mu" path="res://Player/Sprite/The Adventurer - Free/The Adventurer - Free/Idle/idle.png" id="2_pdiaa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Player/Script/state_walk.gd" id="6_7k2cf"]
 [ext_resource type="Script" path="res://Player/Script/PlayerCamera.gd" id="7_kmagr"]
 [ext_resource type="Script" path="res://Player/Script/PlayerInteractionHost.gd" id="8_i44yc"]
+[ext_resource type="Script" path="res://Player/Script/PlayerLight.gd" id="9_g0l7r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akio3"]
 radius = 7.0
@@ -415,6 +416,78 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_git13"]
 size = Vector2(13, 11)
 
+[sub_resource type="Gradient" id="Gradient_a1cek"]
+offsets = PackedFloat32Array(0, 0.409091, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.350649, 0.350649, 0.350649, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j6qes"]
+gradient = SubResource("Gradient_a1cek")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.711009, 0.449541)
+
+[sub_resource type="Animation" id="Animation_6hjrw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("GradientTexture2D_j6qes")]
+}
+
+[sub_resource type="Animation" id="Animation_qolk1"]
+resource_name = "flash"
+loop_mode = 2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.3, 0.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("GradientTexture2D_j6qes")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uu81w"]
+_data = {
+"RESET": SubResource("Animation_6hjrw"),
+"flash": SubResource("Animation_qolk1")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
 motion_mode = 1
@@ -471,3 +544,15 @@ monitoring = false
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_git13")
 debug_color = Color(0.376471, 0.603922, 0.32549, 0.239216)
+
+[node name="PlayerLight" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="PlayerLight"]
+position = Vector2(0, -4)
+texture = SubResource("GradientTexture2D_j6qes")
+script = ExtResource("9_g0l7r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerLight"]
+libraries = {
+"": SubResource("AnimationLibrary_uu81w")
+}

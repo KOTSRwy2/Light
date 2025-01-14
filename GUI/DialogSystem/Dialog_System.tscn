@@ -1,3 +1,191 @@
-[gd_scene format=3 uid="uid://mqe6dcfjjlwo"]
+[gd_scene load_steps=15 format=3 uid="uid://mqe6dcfjjlwo"]
 
-[node name="DialogSystem" type="Node2D"]
+[ext_resource type="Script" path="res://GUI/DialogSystem/Scripts/Dialog_System.gd" id="1_goflm"]
+[ext_resource type="Texture2D" uid="uid://842vmvkcauns" path="res://GUI/DialogSystem/Sprites/Text_Bubble.png" id="2_mben3"]
+[ext_resource type="FontFile" uid="uid://c85vtapheyeje" path="res://GUI/DialogSystem/fronts/Abaddon Light.ttf" id="3_bf8uq"]
+[ext_resource type="FontFile" uid="uid://d2jbdulsi55u0" path="res://GUI/DialogSystem/fronts/Abaddon Bold.ttf" id="4_pedso"]
+[ext_resource type="Texture2D" uid="uid://s4k3ny4ffobr" path="res://NPC/Sprites/Protraits/npc_portrait_01.png" id="5_uic8g"]
+[ext_resource type="Script" path="res://GUI/DialogSystem/Scripts/Diakog_protrait.gd" id="6_0yhhj"]
+[ext_resource type="FontFile" uid="uid://bmdd2chls5yyu" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="6_d6nku"]
+
+[sub_resource type="Gradient" id="Gradient_lj54e"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8p2wg"]
+gradient = SubResource("Gradient_lj54e")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0.00458716)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_alisg"]
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_mben3")
+texture_margin_left = 16.0
+texture_margin_right = 16.0
+modulate_color = Color(0.812278, 0.812278, 0.812278, 0.827451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcc7c"]
+content_margin_left = 5.0
+content_margin_top = 0.0
+content_margin_right = 2.0
+content_margin_bottom = 1.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id="Animation_qwgpt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q48f7"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.2, 1.2, 1.2, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l6ya"]
+_data = {
+"RESET": SubResource("Animation_qwgpt"),
+"default": SubResource("Animation_q48f7")
+}
+
+[node name="DialogSystem" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_goflm")
+
+[node name="DialogUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="DialogUI"]
+modulate = Color(0, 0, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -137.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_8p2wg")
+
+[node name="PanelContainer" type="PanelContainer" parent="DialogUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -433.0
+offset_top = -92.0
+offset_right = -8.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_alisg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.771546, 0.771546, 0.771546, 1)
+theme_override_fonts/normal_font = ExtResource("3_bf8uq")
+theme_override_fonts/bold_font = ExtResource("4_pedso")
+bbcode_enabled = true
+text = "Exemple [b]Text[/b]!!!
+[wave]Wave text...[/wave][i] italic text[/i]
+[shake][color=orangered]Shaking text[/color][/shake]"
+scroll_active = false
+
+[node name="NameLabel" type="Label" parent="DialogUI"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 159.0
+offset_right = 144.0
+offset_bottom = 182.0
+theme_override_colors/font_color = Color(0.894118, 0.862745, 0.796078, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_pedso")
+text = "NAME"
+
+[node name="ProtraitSprite" type="Sprite2D" parent="DialogUI"]
+position = Vector2(47, 201)
+texture = ExtResource("5_uic8g")
+hframes = 4
+script = ExtResource("6_0yhhj")
+
+[node name="Timer" type="Timer" parent="DialogUI"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI"]
+
+[node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI"]
+self_modulate = Color(0.266318, 0.657616, 0.778335, 0.811765)
+layout_mode = 0
+offset_left = 489.0
+offset_top = 249.0
+offset_right = 522.0
+offset_bottom = 264.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcc7c")
+
+[node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_d6nku")
+text = "NEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/DialogProgressIndicator"]
+libraries = {
+"": SubResource("AnimationLibrary_1l6ya")
+}
+autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2

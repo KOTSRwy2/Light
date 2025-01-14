@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Dialog_System="*res://GUI/DialogSystem/Scripts/Dialog_System.gd"
 GobalLevelManager="*res://00_Gobals/GobalLevelManager.gd"
 PlayerManager="*res://00_Gobals/PlayerManager.gd"
 
@@ -26,6 +27,10 @@ window/size/viewport_width=526
 window/size/viewport_height=270
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
+
+[gui]
+
+theme/custom_font="res://GUI/DialogSystem/fronts/Abaddon Light.ttf"
 
 [input]
 

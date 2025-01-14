@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xsq2xd2cj4gj"
-path="res://.godot/imported/text-bubble.png-6e8e47c356f10c47d32f08e8add1c8ec.ctex"
+uid="uid://htvgcx8lphou"
+path="res://.godot/imported/Idle.png-1ee87cba8ec1bda0ec37fdb003032a17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NPC/Sprites/text-bubble.png"
-dest_files=["res://.godot/imported/text-bubble.png-6e8e47c356f10c47d32f08e8add1c8ec.ctex"]
+source_file="res://NPC/Sprites/The Female Adventurer - Free/The Female Adventurer - Free/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-1ee87cba8ec1bda0ec37fdb003032a17.ctex"]
 
 [params]
 

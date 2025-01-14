@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpq6bogap3avu"
-path="res://.godot/imported/npc_sprite.png-ce79c35f8541c901c73dcfa8b99d468d.ctex"
+uid="uid://c3bl83s5p80pl"
+path="res://.godot/imported/answer_bubble.svg-9b1de6c340e89d8811018540f6a32901.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NPC/Sprites/npc_sprite.png"
-dest_files=["res://.godot/imported/npc_sprite.png-ce79c35f8541c901c73dcfa8b99d468d.ctex"]
+source_file="res://GUI/DialogSystem/icons/answer_bubble.svg"
+dest_files=["res://.godot/imported/answer_bubble.svg-9b1de6c340e89d8811018540f6a32901.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

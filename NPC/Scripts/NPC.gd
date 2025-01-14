@@ -77,8 +77,10 @@ func update_dirction_name() -> void:
 		direction_name = "up"
 	elif dirction.y > threshold:
 		direction_name = "down"
-	elif dirction.x < -threshold || dirction.x > threshold:
-		direction_name = "side"
+	elif dirction.x < -threshold:
+		direction_name = "left"
+	else:
+		direction_name = "right"
 		
 
 func setup_npc() -> void:

@@ -17,6 +17,8 @@ var do_behavior : bool = true
 
 
 
+
+
 func _ready() -> void:
 	setup_npc()
 	if Engine.is_editor_hint():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmxlblhtwbg68"]
+[gd_scene load_steps=8 format=3 uid="uid://boynsbt226o01"]
 
 [ext_resource type="Script" path="res://Interactables/Dialog/scripts/Dialog_Interaction.gd" id="1_pnhsg"]
 [ext_resource type="Texture2D" uid="uid://bd46ddyye7r26" path="res://Interactables/Dialog/dialog_interactable.png" id="1_twkni"]

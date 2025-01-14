@@ -1,36 +1,33 @@
-[gd_scene load_steps=17 format=3 uid="uid://b20ekyhf18q6"]
+[gd_scene load_steps=15 format=3 uid="uid://bxxuv2p34mjd2"]
 
-[ext_resource type="Script" path="res://GUI/DialogSystem/Scripts/Dialog_System.gd" id="1_iifv0"]
-[ext_resource type="Texture2D" uid="uid://842vmvkcauns" path="res://GUI/DialogSystem/Sprites/Text_Bubble.png" id="2_t4l8s"]
-[ext_resource type="FontFile" uid="uid://c85vtapheyeje" path="res://GUI/DialogSystem/fronts/Abaddon Light.ttf" id="3_b64di"]
-[ext_resource type="FontFile" uid="uid://d2jbdulsi55u0" path="res://GUI/DialogSystem/fronts/Abaddon Bold.ttf" id="4_xxuu1"]
-[ext_resource type="Texture2D" uid="uid://s4k3ny4ffobr" path="res://NPC/Sprites/Protraits/npc_portrait_01.png" id="5_16hyi"]
-[ext_resource type="FontFile" uid="uid://bmdd2chls5yyu" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="6_8wqqo"]
-[ext_resource type="AudioStream" uid="uid://cqejohwbeg1pm" path="res://GUI/DialogSystem/Audio/voice_blip.wav" id="6_cdlw0"]
-[ext_resource type="Script" path="res://GUI/DialogSystem/Scripts/Diakog_protrait.gd" id="6_mra3t"]
-[ext_resource type="Theme" uid="uid://cibvqh4um13cw" path="res://GUI/DialogSystem/dialog_choice_theme.tres" id="9_1kbrw"]
+[ext_resource type="Script" path="res://GUI/DialogSystem/Scripts/Dialog_System.gd" id="1_nnrcs"]
+[ext_resource type="Texture2D" uid="uid://842vmvkcauns" path="res://GUI/DialogSystem/Sprites/Text_Bubble.png" id="2_dosjf"]
+[ext_resource type="FontFile" uid="uid://c85vtapheyeje" path="res://GUI/DialogSystem/fronts/Abaddon Light.ttf" id="3_5fnl7"]
+[ext_resource type="FontFile" uid="uid://d2jbdulsi55u0" path="res://GUI/DialogSystem/fronts/Abaddon Bold.ttf" id="4_l6dek"]
+[ext_resource type="Texture2D" uid="uid://s4k3ny4ffobr" path="res://NPC/Sprites/Protraits/npc_portrait_01.png" id="5_1yh3c"]
+[ext_resource type="Script" path="res://GUI/DialogSystem/Scripts/Diakog_protrait.gd" id="6_l36a4"]
+[ext_resource type="FontFile" uid="uid://bmdd2chls5yyu" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="7_r6kkf"]
 
-[sub_resource type="Gradient" id="Gradient_3ha51"]
+[sub_resource type="Gradient" id="Gradient_lj54e"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lhgrs"]
-gradient = SubResource("Gradient_3ha51")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8p2wg"]
+gradient = SubResource("Gradient_lj54e")
 fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0.021645)
+fill_to = Vector2(0, 0.00458716)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14d15"]
-content_margin_left = 14.0
-content_margin_top = 10.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_alisg"]
+content_margin_left = 16.0
+content_margin_top = 14.0
 content_margin_right = 14.0
 content_margin_bottom = 10.0
-texture = ExtResource("2_t4l8s")
+texture = ExtResource("2_dosjf")
 texture_margin_left = 16.0
-texture_margin_top = 16.0
 texture_margin_right = 16.0
-texture_margin_bottom = 16.0
+modulate_color = Color(0.812278, 0.812278, 0.812278, 0.827451)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdbgg"]
-content_margin_left = 4.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcc7c"]
+content_margin_left = 5.0
 content_margin_top = 0.0
 content_margin_right = 2.0
 content_margin_bottom = 1.0
@@ -40,7 +37,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="Animation" id="Animation_a1m2w"]
+[sub_resource type="Animation" id="Animation_qwgpt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,7 +52,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_0md2t"]
+[sub_resource type="Animation" id="Animation_q48f7"]
 resource_name = "default"
 loop_mode = 1
 tracks/0/type = "value"
@@ -65,22 +62,21 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 0.8),
+"times": PackedFloat32Array(0, 0.466667, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1.2, 1.4, 1.5, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1.2, 1.2, 1.2, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dq2g2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l6ya"]
 _data = {
-"RESET": SubResource("Animation_a1m2w"),
-"default": SubResource("Animation_0md2t")
+"RESET": SubResource("Animation_qwgpt"),
+"default": SubResource("Animation_q48f7")
 }
 
 [node name="DialogSystem" type="CanvasLayer"]
 process_mode = 3
-layer = 0
-script = ExtResource("1_iifv0")
+script = ExtResource("1_nnrcs")
 
 [node name="DialogUI" type="Control" parent="."]
 layout_mode = 3
@@ -89,18 +85,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="DialogUI"]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0.588235)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -135.0
+offset_top = -137.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("GradientTexture2D_lhgrs")
+texture = SubResource("GradientTexture2D_8p2wg")
 
 [node name="PanelContainer" type="PanelContainer" parent="DialogUI"]
 layout_mode = 1
@@ -109,108 +106,86 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -381.0
-offset_top = -89.0
-offset_right = -10.0
-offset_bottom = -9.0
+offset_left = -433.0
+offset_top = -92.0
+offset_right = -8.0
+offset_bottom = -11.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_14d15")
+theme_override_styles/panel = SubResource("StyleBoxTexture_alisg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer"]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.439216, 0.396078, 0.321569, 1)
-theme_override_fonts/normal_font = ExtResource("3_b64di")
-theme_override_fonts/bold_font = ExtResource("4_xxuu1")
+theme_override_colors/default_color = Color(0.771546, 0.771546, 0.771546, 1)
+theme_override_fonts/normal_font = ExtResource("3_5fnl7")
+theme_override_fonts/bold_font = ExtResource("4_l6dek")
 bbcode_enabled = true
 text = "Exemple [b]Text[/b]!!!
 [wave]Wave text...[/wave][i] italic text[/i]
 [shake][color=orangered]Shaking text[/color][/shake]"
-fit_content = true
 scroll_active = false
 
 [node name="NameLabel" type="Label" parent="DialogUI"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 162.0
-offset_right = 149.0
-offset_bottom = 185.0
+offset_left = 97.0
+offset_top = 159.0
+offset_right = 144.0
+offset_bottom = 182.0
 theme_override_colors/font_color = Color(0.894118, 0.862745, 0.796078, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("4_xxuu1")
+theme_override_fonts/font = ExtResource("4_l6dek")
 text = "NAME"
 
-[node name="PortraitSprite" type="Sprite2D" parent="DialogUI"]
-position = Vector2(49, 197)
-texture = ExtResource("5_16hyi")
+[node name="ProtraitSprite" type="Sprite2D" parent="DialogUI"]
+position = Vector2(47, 201)
+texture = ExtResource("5_1yh3c")
 hframes = 4
-script = ExtResource("6_mra3t")
+script = ExtResource("6_l36a4")
 
 [node name="Timer" type="Timer" parent="DialogUI"]
-one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI"]
-stream = ExtResource("6_cdlw0")
-max_polyphony = 6
 
-[node name="dialogProgressIndicater" type="PanelContainer" parent="DialogUI"]
-self_modulate = Color(0.184607, 0.561098, 0.283281, 1)
+[node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI"]
+self_modulate = Color(0.266318, 0.657616, 0.778335, 0.811765)
 layout_mode = 0
-offset_left = 443.0
-offset_top = 250.0
-offset_right = 475.0
+offset_left = 489.0
+offset_top = 249.0
+offset_right = 522.0
 offset_bottom = 264.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_xdbgg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcc7c")
 
-[node name="Label" type="Label" parent="DialogUI/dialogProgressIndicater"]
+[node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_8wqqo")
+theme_override_fonts/font = ExtResource("7_r6kkf")
 text = "NEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/dialogProgressIndicater"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/DialogProgressIndicator"]
 libraries = {
-"": SubResource("AnimationLibrary_dq2g2")
+"": SubResource("AnimationLibrary_1l6ya")
 }
 autoplay = "default"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogUI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -114.0
-offset_right = 215.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_1kbrw")
-alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="DialogUI/VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_1kbrw")
-text = "Choice 1"
 
-[node name="Button2" type="Button" parent="DialogUI/VBoxContainer"]
+[node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Choice 1"
 
-[node name="Button3" type="Button" parent="DialogUI/VBoxContainer"]
+[node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Choice 1"
 
-[node name="Button4" type="Button" parent="DialogUI/VBoxContainer"]
+[node name="Button4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Choice 1"
 
-[node name="Button5" type="Button" parent="DialogUI/VBoxContainer"]
+[node name="Button5" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Choice 1"

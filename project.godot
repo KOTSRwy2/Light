@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Dialog_System="*res://GUI/DialogSystem/Scripts/Dialog_System.gd"
 GobalLevelManager="*res://00_Gobals/GobalLevelManager.gd"
 PlayerManager="*res://00_Gobals/PlayerManager.gd"
+Dialog_System="*res://GUI/DialogSystem/Dialog_System1.tscn"
 
 [display]
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bd46ddyye7r26" path="res://Interactables/Dialog/dialog_interactable.png" id="1_twkni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtdc"]
-size = Vector2(44, 32)
 
 [sub_resource type="Animation" id="Animation_rvaij"]
 length = 0.001

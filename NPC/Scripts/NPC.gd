@@ -23,6 +23,7 @@ func _ready() -> void:
 		return
 	#gather_interactables()
 	do_behavior_enabled.emit()
+	print_tree_pretty()
 	pass
 
 

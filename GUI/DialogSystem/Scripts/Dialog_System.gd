@@ -1,5 +1,5 @@
 @tool
-@icon( "res://GUI/DialogSystem/icons/star_bubble.svg" )
+@icon( "res://GUI/dialog_system/icons/star_bubble.svg" )
 class_name DialogSystem extends CanvasLayer
 
 signal finished
@@ -20,12 +20,13 @@ var dialog_item_index : int = 0
 @onready var dialog_ui : Control = $DialogUI
 @onready var content : RichTextLabel = $DialogUI/PanelContainer/RichTextLabel
 @onready var name_label : Label = $DialogUI/NameLabel
-@onready var portrait_sprite : DialogProtrait = $DialogUI/PortraitSprite
-@onready var dialog_progress_indicater : PanelContainer = $DialogUI/dialogProgressIndicater
-@onready var dialog_progress_indicater_label : Label = $DialogUI/dialogProgressIndicater/Label
+@onready var portrait_sprite : DialogProtrait = $DialogUI/ProtraitSprite
+@onready var dialog_progress_indicater : PanelContainer = $DialogUI/DialogProgressIndicator
+@onready var dialog_progress_indicater_label : Label = $DialogUI/DialogProgressIndicator/Label
 @onready var timer : Timer = $DialogUI/Timer
 @onready var audio : AudioStreamPlayer = $DialogUI/AudioStreamPlayer
-@onready var choice_options : VBoxContainer= $DialogUI/VBoxContainer
+@onready var choice_options : VBoxContainer= $VBoxContainer
+
 
 
 
@@ -46,7 +47,7 @@ func _unhandled_input(event : InputEvent) -> void:
 		return
 	if(
 		event.is_action_pressed("Interact") or
-		event.is_action_pressed("attack") or 
+		#event.is_action_pressed("attack") or 
 		event.is_action_pressed("ui_accept")
 	):
 		if text_in_progress == true:
